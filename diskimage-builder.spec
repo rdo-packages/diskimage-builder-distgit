@@ -7,9 +7,6 @@ Group:		System Environment/Base
 URL:		https://launchpad.net/diskimage-builder
 Source0:	http://tarballs.openstack.org/diskimage-builder/%{name}-%{version}.tar.gz
 
-# https://review.openstack.org/#/c/103451/
-Patch0001: Remove-fixfiles-from-rpm-distro-finalize.patch
-
 BuildArch: noarch
 BuildRequires: python2-devel
 BuildRequires: python-setuptools
@@ -26,9 +23,7 @@ Requires: tar
 Requires: dib-utils
 
 %prep
-%setup -q -n %{name}-%{version}
-
-%patch0001 -p1
+%setup -q -n %{name}-%{upstream_version}
 
 %build
 %{__python} setup.py build

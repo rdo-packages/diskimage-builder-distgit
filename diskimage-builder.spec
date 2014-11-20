@@ -1,7 +1,7 @@
 Name:		diskimage-builder
 Summary:	Image building tools for OpenStack
-Version:	0.1.15
-Release:	3%{?dist}
+Version:    XXX
+Release:    XXX{?dist}
 License:	ASL 2.0
 Group:		System Environment/Base
 URL:		https://launchpad.net/diskimage-builder
@@ -15,7 +15,6 @@ BuildRequires: python-pbr
 
 Requires: kpartx
 Requires: qemu-img
-Requires: busybox
 Requires: curl
 Requires: python-argparse
 Requires: python-babel
@@ -56,6 +55,61 @@ Components of TripleO that are responsible for building disk images.
 %{_datadir}/%{name}/elements
 
 %changelog
+* Fri Nov 14 2014 Ben Nemec <bnemec@redhat.com> 0.1.34-10
+- Remove duplicate binary-deps from dracut-ramdisk
+
+* Fri Nov 14 2014 Ben Nemec <bnemec@redhat.com> 0.1.34-9
+- Fix perms on binary-deps patch
+
+* Fri Nov 14 2014 Ben Nemec <bnemec@redhat.com> 0.1.34-8
+- Use binary-deps.d for dracut ramdisks
+
+* Thu Nov 13 2014 Ben Nemec <bnemec@redhat.com> 0.1.34-7
+- Simplify Dracut cmdline script
+
+* Tue Nov 11 2014 Ben Nemec <bnemec@redhat.com> 0.1.34-6
+- Install lsb_release from package
+
+* Thu Oct 23 2014 James Slagle <jslagle@redhat.com> 0.1.34-5
+- Unset trap before dracut ramdisk build script exits
+
+* Wed Oct 22 2014 James Slagle <jslagle@redhat.com> 0.1.34-4
+- Move busybox binary-dep to ramdisk element
+
+* Tue Oct 21 2014 James Slagle <jslagle@redhat.com> 0.1.34-3
+- Remove requirement on busybox, we use dracut now.
+
+* Mon Oct 20 2014 James Slagle <jslagle@redhat.com> 0.1.34-2
+- Enable dracut deploy ramdisks
+
+* Mon Oct 20 2014 James Slagle <jslagle@redhat.com> 0.1.34-1
+- Update to upstream 0.1.34
+
+* Fri Oct 17 2014 James Slagle <jslagle@redhat.com> 0.1.33-4
+- svc-map requires PyYAML
+
+* Fri Oct 17 2014 James Slagle <jslagle@redhat.com> 0.1.33-3
+- Make sure file added by patch is +x
+
+* Wed Oct 15 2014 James Slagle <jslagle@redhat.com> 0.1.33-2
+- Move install bin from rpm-distro to yum
+- Check for epel before installing it
+
+* Wed Oct 15 2014 James Slagle <jslagle@redhat.com> 0.1.33-1
+- Update to upstream 0.1.33
+
+* Wed Oct 01 2014 James Slagle <jslagle@redhat.com> 0.1.32-1
+- Update to upstream 0.1.32
+
+* Mon Sep 29 2014 James Slagle <jslagle@redhat.com> 0.1.31-1
+- Update to upstream 0.1.31
+
+* Mon Sep 15 2014 James Slagle <jslagle@redhat.com> 0.1.30-1
+- Update to upstream 0.1.30
+
+* Thu Sep 11 2014 James Slagle <jslagle@redhat.com> - 0.1.15-4
+- Switch to rdopkg
+
 * Wed Jul 02 2014 James Slagle <jslagle@redhat.com> - 0.1.15-3
 - Add patch Remove-fixfiles-from-rpm-distro-finalize.patch
 

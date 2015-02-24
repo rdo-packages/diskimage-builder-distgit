@@ -48,7 +48,7 @@ Components of TripleO that are responsible for building disk images.
 
 %files
 %doc LICENSE
-%doc docs/ci.md
+%doc doc/source/ci.md
 %{_bindir}/*
 %{python_sitelib}/diskimage_builder*
 %{_datadir}/%{name}/lib

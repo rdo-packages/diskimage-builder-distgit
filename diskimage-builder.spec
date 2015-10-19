@@ -1,13 +1,20 @@
+%global commit0 21f5e6146c02b4ed60bf9061b76e1abffbef2632
+%global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
+
+%{!?upstream_version: %global upstream_version %{version}}
+
 Name:		diskimage-builder
 Summary:	Image building tools for OpenStack
-Version:    XXX
-Release:    XXX{?dist}
+Version:    1.1.3
+Release:    1%{?dist}
 License:	ASL 2.0
 Group:		System Environment/Base
 URL:		https://launchpad.net/diskimage-builder
-Source0:	http://tarballs.openstack.org/diskimage-builder/%{name}-%{version}.tar.gz
+# Once we have stable branches and stable releases we can go back to using release tarballs
+Source0:  https://github.com/openstack/%{name}/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
 
 BuildArch: noarch
+BuildRequires: git
 BuildRequires: python2-devel
 BuildRequires: python-setuptools
 BuildRequires: python-d2to1
@@ -22,7 +29,7 @@ Requires: tar
 Requires: dib-utils
 
 %prep
-%setup -q -n %{name}-%{upstream_version}
+%autosetup -n %{name}-%{commit0} -S git
 
 %build
 %{__python} setup.py build
@@ -55,6 +62,9 @@ Components of TripleO that are responsible for building disk images.
 %{_datadir}/%{name}/elements
 
 %changelog
+* Mon Oct 19 2015 John Trowbridge <trown@redhat.com> - 1.1.3-1
+- Use a source tarball for a git hash that has passed delorean CI for liberty release
+
 * Fri Nov 14 2014 Ben Nemec <bnemec@redhat.com> 0.1.34-10
 - Remove duplicate binary-deps from dracut-ramdisk
 

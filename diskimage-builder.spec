@@ -8,6 +8,7 @@ URL:		https://launchpad.net/diskimage-builder
 Source0:	http://tarballs.openstack.org/diskimage-builder/%{name}-%{version}.tar.gz
 
 BuildArch: noarch
+
 BuildRequires: python2-devel
 BuildRequires: python-setuptools
 BuildRequires: python-d2to1
@@ -20,6 +21,8 @@ Requires: python-argparse
 Requires: python-babel
 Requires: tar
 Requires: dib-utils
+
+%global __requires_exclude /usr/local/bin/dib-python
 
 %prep
 %setup -q -n %{name}-%{upstream_version}

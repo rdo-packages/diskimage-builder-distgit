@@ -23,6 +23,7 @@ Requires: tar
 Requires: dib-utils
 
 %global __requires_exclude /usr/local/bin/dib-python
+%global __requires_exclude %__requires_exclude|/sbin/runscript
 
 %prep
 %setup -q -n %{name}-%{upstream_version}

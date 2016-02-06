@@ -6,7 +6,7 @@
 Name:		diskimage-builder
 Summary:	Image building tools for OpenStack
 Version:    1.1.3
-Release:    1%{?dist}
+Release:    2%{?dist}
 License:	ASL 2.0
 Group:		System Environment/Base
 URL:		https://launchpad.net/diskimage-builder
@@ -62,6 +62,10 @@ Components of TripleO that are responsible for building disk images.
 %{_datadir}/%{name}/elements
 
 %changelog
+* Mon Oct 19 2015 John Trowbridge <trown@redhat.com> - 1.1.3-2
+- Bump
+- Use a source tarball for a git hash that has passed delorean CI for liberty release
+
 * Mon Oct 19 2015 John Trowbridge <trown@redhat.com> - 1.1.3-1
 - Use a source tarball for a git hash that has passed delorean CI for liberty release
 

@@ -6,6 +6,7 @@ License:	ASL 2.0
 Group:		System Environment/Base
 URL:		https://launchpad.net/diskimage-builder
 Source0:	http://tarballs.openstack.org/diskimage-builder/%{name}-%{version}.tar.gz
+AutoReqProv: no
 
 BuildArch: noarch
 
@@ -21,6 +22,11 @@ Requires: python-argparse
 Requires: python-babel
 Requires: tar
 Requires: dib-utils
+Requires: /bin/bash
+Requires: /bin/sh
+Requires: /usr/bin/env
+Requires: /usr/bin/python
+Requires: python(abi) = 2.7
 
 %global __requires_exclude /usr/local/bin/dib-python
 %global __requires_exclude %__requires_exclude|/sbin/runscript

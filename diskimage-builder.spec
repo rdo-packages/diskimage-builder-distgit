@@ -1,11 +1,14 @@
+
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+
 Name:           diskimage-builder
 Summary:        Image building tools for OpenStack
-Version:        XXX
-Release:        XXX
+Version:        1.13.0
+Release:        1%{?dist}
 License:        ASL 2.0
 Group:          System Environment/Base
 URL:            https://launchpad.net/diskimage-builder
-Source0:        http://tarballs.openstack.org/diskimage-builder/%{name}-%{version}.tar.gz
+Source0:        http://tarballs.openstack.org/diskimage-builder/%{name}-%{version}%{?milestone}.tar.gz
 AutoReqProv: no
 
 BuildArch: noarch
@@ -65,3 +68,5 @@ Components of TripleO that are responsible for building disk images.
 %{_datadir}/%{name}/elements
 
 %changelog
+* Wed Mar 30 2016 RDO <rdo-list@redhat.com> 1.13.0-0.1
+-  Upstream 1.13.0 

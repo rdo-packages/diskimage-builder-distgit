@@ -1,5 +1,5 @@
 # UUID                                  	Group Name
 #
 1d027572804838991ea5103c0445c1f5bf88fefd	openstack/diskimage-builder-distgit-ptl
-7125dd4b0815cd204f074793ad9a400e7951980c	diskimage-builder-distgit-core
+7125dd4b0815cd204f074793ad9a400e7951980c	openstack/diskimage-builder-distgit-core
 global:Registered-Users                 	Registered Users

@@ -1,3 +1,4 @@
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 Name:           diskimage-builder
 Summary:        Image building tools for OpenStack
 Version:        XXX
@@ -5,7 +6,7 @@ Release:        XXX
 License:        ASL 2.0
 Group:          System Environment/Base
 URL:            https://launchpad.net/diskimage-builder
-Source0:        http://tarballs.openstack.org/diskimage-builder/%{name}-%{version}.tar.gz
+Source0:        http://tarballs.openstack.org/diskimage-builder/%{name}-%{upstream_version}.tar.gz
 AutoReqProv: no
 
 BuildArch: noarch

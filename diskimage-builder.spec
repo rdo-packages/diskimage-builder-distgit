@@ -5,7 +5,7 @@ Release:        XXX
 License:        ASL 2.0
 Group:          System Environment/Base
 URL:            https://launchpad.net/diskimage-builder
-Source0:        http://tarballs.openstack.org/diskimage-builder/%{name}-%{version}.tar.gz
+Source0:        https://tarballs.openstack.org/diskimage-builder/%{name}-%{version}.tar.gz
 AutoReqProv: no
 
 BuildArch: noarch

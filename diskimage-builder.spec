@@ -19,7 +19,6 @@ BuildRequires: python-pbr
 Requires: kpartx
 Requires: qemu-img
 Requires: curl
-Requires: python-argparse
 Requires: python-babel
 Requires: tar
 Requires: dib-utils

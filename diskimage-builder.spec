@@ -65,3 +65,4 @@ Components of TripleO that are responsible for building disk images.
 %{_datadir}/%{name}/elements
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/diskimage-builder/commit/?id=958ea8a3372157fe62c3a2bb1fcd55a9cadedab1

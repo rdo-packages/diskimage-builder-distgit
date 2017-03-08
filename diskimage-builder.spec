@@ -40,11 +40,9 @@ Requires: python(abi) = 2.7
 %install
 %{__python2} setup.py install -O1 --skip-build --root=%{buildroot}
 
-mkdir -p %{buildroot}%{_datadir}/%{name}/lib
 mkdir -p %{buildroot}%{_datadir}/%{name}/elements
 
-install -p -D -m 644 lib/* %{buildroot}%{_datadir}/%{name}/lib
-cp -vr elements/ %{buildroot}%{_datadir}/%{name}
+cp -vr diskimage_builder/elements/ %{buildroot}%{_datadir}/%{name}
 
 # explicitly remove config-applier since it does a pip install
 rm -rf %{buildroot}%{_datadir}/%{name}/elements/config-applier
@@ -61,7 +59,6 @@ Components of TripleO that are responsible for building disk images.
 %doc doc/source/ci.md
 %{_bindir}/*
 %{python2_sitelib}/diskimage_builder*
-%{_datadir}/%{name}/lib
 %{_datadir}/%{name}/elements
 
 %changelog

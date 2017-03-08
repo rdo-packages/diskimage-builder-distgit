@@ -1,7 +1,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 Name:           diskimage-builder
 Summary:        Image building tools for OpenStack
-Version:        1.27.0
+Version:        1.28.0
 Release:        1%{?dist}
 License:        ASL 2.0
 Group:          System Environment/Base
@@ -65,6 +65,9 @@ Components of TripleO that are responsible for building disk images.
 %{_datadir}/%{name}/elements
 
 %changelog
+* Wed Mar 08 2017 Alfredo Moralejo <amoralej@redhat.com> 1.28.0-1
+- Update to 1.28.0
+
 * Fri Feb 10 2017 Alfredo Moralejo <amoralej@redhat.com> 1.27.0-1
 - Update to 1.27.0
 

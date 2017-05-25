@@ -1,0 +1,29 @@
+From 449e73c14d71df61b7d6841ac49807b6f058853e Mon Sep 17 00:00:00 2001
+From: Gregory Haynes <greg@greghaynes.net>
+Date: Wed, 17 May 2017 08:50:21 -0700
+Subject: [PATCH] Set manifests to mode 600 and owner root
+
+Manifests files can release sensitive information and therefore should
+have restrictive permissions.
+
+Change-Id: I64d6c830217a7d8b0172df2dc774079dcd1e2a68
+Related-Bug: #1671842
+---
+ elements/manifests/cleanup.d/01-copy-manifests-dir | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/elements/manifests/cleanup.d/01-copy-manifests-dir b/elements/manifests/cleanup.d/01-copy-manifests-dir
+index 27d8612..15aec97 100755
+--- a/elements/manifests/cleanup.d/01-copy-manifests-dir
++++ b/elements/manifests/cleanup.d/01-copy-manifests-dir
+@@ -34,3 +34,7 @@ echo "$DIB_ARGS" | sudo dd of=${MANIFEST_IMAGE_PATH}/dib_arguments  # dib-lint:
+ 
+ mkdir -p ${DIB_MANIFEST_SAVE_DIR}
+ cp --no-preserve=ownership -rv ${MANIFEST_IMAGE_PATH} ${DIB_MANIFEST_SAVE_DIR}
++
++# may contain passwords, etc, so limit permissions
++find ${DIB_MANIFEST_SAVE_DIR} -type f | xargs sudo chown root:root # dib-lint: safe_sudo
++find ${DIB_MANIFEST_SAVE_DIR} -type f | xargs sudo chmod 600 # dib-lint: safe_sudo
+-- 
+2.10.2
+

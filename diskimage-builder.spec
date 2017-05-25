@@ -7,6 +7,7 @@ License:        ASL 2.0
 Group:          System Environment/Base
 URL:            https://launchpad.net/diskimage-builder
 Source0:        https://tarballs.openstack.org/diskimage-builder/%{name}-%{upstream_version}.tar.gz
+Patch0:         0001-Set-manifests-to-mode-600-and-owner-root.patch
 AutoReqProv: no
 
 BuildArch: noarch
@@ -33,6 +34,7 @@ Requires: python(abi) = 2.7
 
 %prep
 %setup -q -n %{name}-%{upstream_version}
+%patch0 -p1
 
 %build
 %{__python2} setup.py build

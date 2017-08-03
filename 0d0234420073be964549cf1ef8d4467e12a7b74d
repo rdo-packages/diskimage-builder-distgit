@@ -1,0 +1,9 @@
+Code-Review+2: David Moreau Simard <dms@redhat.com>
+Code-Review+2: hguemar <hguemar@fedoraproject.org>
+Workflow+1: hguemar <hguemar@fedoraproject.org>
+Verified+2: Jenkins CI <admin@rpmfactory.beta.rdoproject.org>
+Submitted-by: Jenkins CI <admin@rpmfactory.beta.rdoproject.org>
+Submitted-at: Thu, 03 Aug 2017 19:39:57 +0000
+Reviewed-on: https://review.rdoproject.org/r/8126
+Project: openstack/diskimage-builder-distgit
+Branch: refs/heads/rpm-master

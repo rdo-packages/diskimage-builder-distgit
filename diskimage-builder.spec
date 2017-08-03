@@ -21,6 +21,7 @@ Requires: qemu-img
 Requires: curl
 Requires: python-babel
 Requires: tar
+Requires: git
 Requires: dib-utils
 Requires: /bin/bash
 Requires: /bin/sh

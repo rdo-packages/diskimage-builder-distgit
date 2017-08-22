@@ -28,6 +28,12 @@ Requires: /bin/sh
 Requires: /usr/bin/env
 Requires: /usr/bin/python
 Requires: python(abi) = 2.7
+Requires: python-flake8
+Requires: python-networkx
+Requires: python-pbr
+Requires: python-six
+Requires: python-stevedore
+Requires: PyYAML
 
 %global __requires_exclude /usr/local/bin/dib-python
 %global __requires_exclude %__requires_exclude|/sbin/runscript

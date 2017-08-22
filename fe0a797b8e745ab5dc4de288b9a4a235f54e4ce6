@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a890539_f3f7ad8a",
+        "filename": "diskimage-builder.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2017-08-22T12:14:34Z",
+      "side": 1,
+      "message": "pbr is also the requirement and it\u0027s used, any reason for not adding it here as Requires?: https://github.com/openstack/diskimage-builder/blob/63a27bd0c452ff5e97e11e1e79251402c978c12d/diskimage_builder/version.py#L16\n\nand flake8 in dib-lint binary: https://github.com/openstack/diskimage-builder/blob/master/bin/dib-lint#L102",
+      "revId": "fe0a797b8e745ab5dc4de288b9a4a235f54e4ce6",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}

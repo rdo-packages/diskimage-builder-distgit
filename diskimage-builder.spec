@@ -2,11 +2,14 @@
 Name:           diskimage-builder
 Summary:        Image building tools for OpenStack
 Version:        1.28.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        ASL 2.0
 Group:          System Environment/Base
 URL:            https://launchpad.net/diskimage-builder
 Source0:        https://tarballs.openstack.org/diskimage-builder/%{name}-%{upstream_version}.tar.gz
+
+Patch0001: 0001-Remove-nested-quotes-from-TAROPTS.patch
+
 AutoReqProv: no
 
 BuildArch: noarch
@@ -33,6 +36,8 @@ Requires: python(abi) = 2.7
 
 %prep
 %setup -q -n %{name}-%{upstream_version}
+
+%patch0001 -p1
 
 %build
 %{__python2} setup.py build
@@ -65,6 +70,9 @@ Components of TripleO that are responsible for building disk images.
 %{_datadir}/%{name}/elements
 
 %changelog
+* Wed Sep 20 2017 Alfredo Moralejo <amoralej@redhat.com> 1.28.0-2
+- Remove nested quotes from TAROPTS
+
 * Wed Mar 08 2017 Alfredo Moralejo <amoralej@redhat.com> 1.28.0-1
 - Update to 1.28.0
 

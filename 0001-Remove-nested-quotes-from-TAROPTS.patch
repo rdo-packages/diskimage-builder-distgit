@@ -1,0 +1,28 @@
+From 79f2a2d143bcf0411720313f986a1fcca1e7a2fe Mon Sep 17 00:00:00 2001
+From: Ben Nemec <bnemec@redhat.com>
+Date: Fri, 1 Sep 2017 17:29:15 -0500
+Subject: [PATCH] Remove nested quotes from TAROPTS
+
+Per the bug report, these seem to be causing issues with maintaining
+file capabilities.  They aren't necessary so let's just remove them.
+
+Change-Id: I06c90fdc85655986142b936cadbe04d75dd27427
+Closes-Bug: 1714604
+(cherry picked from commit 72d0d22cdf3d0581f1b2b9993debde0146075004)
+---
+ elements/redhat-common/bin/extract-image | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/elements/redhat-common/bin/extract-image b/elements/redhat-common/bin/extract-image
+index ee01f68..9360fa1 100755
+--- a/elements/redhat-common/bin/extract-image
++++ b/elements/redhat-common/bin/extract-image
+@@ -96,7 +96,7 @@ function extract_image() {
+             if [ 0 == `sudo chroot $WORKING/mnt bin/tar --help | grep -c xattrs-exclude` ]; then
+                 TAROPTS="--no-xattrs"
+             else
+-                TAROPTS="--xattrs --xattrs-include='*' --xattrs-exclude='security.selinux'"
++                TAROPTS="--xattrs --xattrs-include=* --xattrs-exclude=security.selinux"
+             fi
+             # Chroot in so that we get the correct uid/gid
+             sudo chroot $WORKING/mnt bin/tar $TAROPTS -cz . > $WORKING/tmp.tar

@@ -41,6 +41,11 @@ Requires: PyYAML
 %prep
 %setup -q -n %{name}-%{upstream_version}
 
+# Patches go above here.
+# This regenerates SOURCES.txt, so when patches are introduced,
+# new files are included.
+find . -type f | sed -e 's/^\.\///' | sort -u > diskimage_builder.egg-info/SOURCES.txt
+
 %build
 %{__python2} setup.py build
 

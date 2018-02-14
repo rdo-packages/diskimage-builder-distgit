@@ -12,9 +12,9 @@ AutoReqProv: no
 BuildArch: noarch
 
 BuildRequires: python2-devel
-BuildRequires: python-setuptools
+BuildRequires: python2-setuptools
 BuildRequires: python-d2to1
-BuildRequires: python-pbr
+BuildRequires: python2-pbr
 
 Requires: kpartx
 Requires: qemu-img
@@ -28,11 +28,11 @@ Requires: /bin/sh
 Requires: /usr/bin/env
 Requires: /usr/bin/python
 Requires: python(abi) = 2.7
-Requires: python-flake8
+Requires: python2-flake8
 Requires: python-networkx
-Requires: python-pbr
-Requires: python-six
-Requires: python-stevedore
+Requires: python2-pbr
+Requires: python2-six
+Requires: python2-stevedore
 Requires: PyYAML
 
 %global __requires_exclude /usr/local/bin/dib-python

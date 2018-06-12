@@ -1,0 +1,4 @@
+- project:
+    name: openstack/diskimage-builder-distgit
+    templates:
+      - package-distgit-check-jobs

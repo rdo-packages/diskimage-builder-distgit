@@ -1,0 +1,8 @@
+- project:
+    name: openstack/diskimage-builder-distgit
+    templates:
+      - package-distgit-check-jobs
+    check:
+      jobs:
+        - distgit-cbs-validate
+        - distgit-cbc-final-build

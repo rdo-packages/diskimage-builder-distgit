@@ -1,7 +1,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 Name:           diskimage-builder
 Summary:        Image building tools for OpenStack
-Version:        2.11.0
+Version:        2.12.0
 Release:        1%{?dist}
 License:        ASL 2.0
 Group:          System Environment/Base
@@ -69,6 +69,9 @@ Components of TripleO that are responsible for building disk images.
 %{_datadir}/%{name}/elements
 
 %changelog
+* Tue Mar 14 2018 RDO <dev@lists.rdoproject.org> 2.12.0-1
+- Update to 2.12.0
+
 * Tue Mar 13 2018 RDO <dev@lists.rdoproject.org> 2.11.0-1
 - Update to 2.11.0
 

@@ -1,3 +1,16 @@
+# Macros for py2/py3 compatibility
+%if 0%{?fedora} || 0%{?rhel} > 7
+%global pydefault 3
+%else
+%global pydefault 2
+%endif
+
+%global pydefault_bin python%{pydefault}
+%global pydefault_sitelib %python%{pydefault}_sitelib
+%global pydefault_install %py%{pydefault}_install
+%global pydefault_build %py%{pydefault}_build
+# End of macros for py2/py3 compatibility
+
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 Name:           diskimage-builder
 Summary:        Image building tools for OpenStack
@@ -11,29 +24,38 @@ AutoReqProv: no
 
 BuildArch: noarch
 
-BuildRequires: python2-devel
-BuildRequires: python2-setuptools
+BuildRequires: python%{pydefault}-devel
+BuildRequires: python%{pydefault}-setuptools
+BuildRequires: python%{pydefault}-pbr
+%if %{pydefault} == 2
 BuildRequires: python-d2to1
-BuildRequires: python2-pbr
+%else
+BuildRequires: python%{pydefault}-d2to1
+%endif
 
 Requires: kpartx
 Requires: qemu-img
 Requires: curl
-Requires: python-babel
 Requires: tar
 Requires: git
 Requires: dib-utils
 Requires: /bin/bash
 Requires: /bin/sh
 Requires: /usr/bin/env
-Requires: /usr/bin/python
-Requires: python(abi) = 2.7
-Requires: python2-flake8
+Requires: python%{pydefault}
+Requires: python%{pydefault}-flake8
+Requires: python%{pydefault}-pbr
+Requires: python%{pydefault}-six
+Requires: python%{pydefault}-stevedore
+%if %{pydefault} == 2
+Requires: python-babel
 Requires: python-networkx
-Requires: python2-pbr
-Requires: python2-six
-Requires: python2-stevedore
 Requires: PyYAML
+%else
+Requires: python%{pydefault}-babel
+Requires: python%{pydefault}-networkx
+Requires: python%{pydefault}-PyYAML
+%endif
 
 %global __requires_exclude /usr/local/bin/dib-python
 %global __requires_exclude %__requires_exclude|/sbin/runscript
@@ -42,10 +64,10 @@ Requires: PyYAML
 %setup -q -n %{name}-%{upstream_version}
 
 %build
-%{__python2} setup.py build
+%{pydefault_build}
 
 %install
-%{__python2} setup.py install -O1 --skip-build --root=%{buildroot}
+%{pydefault_install}
 
 mkdir -p %{buildroot}%{_datadir}/%{name}/elements
 
@@ -65,7 +87,7 @@ Components of TripleO that are responsible for building disk images.
 %doc LICENSE
 %doc doc/source/ci.md
 %{_bindir}/*
-%{python2_sitelib}/diskimage_builder*
+%{pydefault_sitelib}/diskimage_builder*
 %{_datadir}/%{name}/elements
 
 %changelog

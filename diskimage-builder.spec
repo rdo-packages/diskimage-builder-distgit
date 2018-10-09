@@ -68,9 +68,6 @@ Requires: python%{pydefault}-PyYAML
 %install
 %{pydefault_install}
 
-# explicitly remove config-applier since it does a pip install
-rm -rf %{buildroot}%{_datadir}/%{name}/elements/config-applier
-
 %description
 Components of TripleO that are responsible for building disk images.
 

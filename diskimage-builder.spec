@@ -38,7 +38,6 @@ Requires: qemu-img
 Requires: curl
 Requires: tar
 Requires: git
-Requires: dib-utils
 Requires: /bin/bash
 Requires: /bin/sh
 Requires: /usr/bin/env
@@ -71,10 +70,6 @@ Requires: python%{pydefault}-PyYAML
 
 # explicitly remove config-applier since it does a pip install
 rm -rf %{buildroot}%{_datadir}/%{name}/elements/config-applier
-
-# This file is being split out of diskimage-builder, so remove it to
-# avoid conflicts with the new package.
-rm -f %{buildroot}%{_bindir}/dib-run-parts
 
 %description
 Components of TripleO that are responsible for building disk images.

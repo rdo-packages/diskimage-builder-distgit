@@ -1,14 +1,14 @@
 # Macros for py2/py3 compatibility
 %if 0%{?fedora} || 0%{?rhel} > 7
-%global pydefault 3
+%global pyver 3
 %else
-%global pydefault 2
+%global pyver 2
 %endif
 
-%global pydefault_bin python%{pydefault}
-%global pydefault_sitelib %python%{pydefault}_sitelib
-%global pydefault_install %py%{pydefault}_install
-%global pydefault_build %py%{pydefault}_build
+%global pyver_bin python%{pyver}
+%global pyver_sitelib %python%{pyver}_sitelib
+%global pyver_install %py%{pyver}_install
+%global pyver_build %py%{pyver}_build
 # End of macros for py2/py3 compatibility
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
@@ -24,13 +24,13 @@ AutoReqProv: no
 
 BuildArch: noarch
 
-BuildRequires: python%{pydefault}-devel
-BuildRequires: python%{pydefault}-setuptools
-BuildRequires: python%{pydefault}-pbr
-%if %{pydefault} == 2
+BuildRequires: python%{pyver}-devel
+BuildRequires: python%{pyver}-setuptools
+BuildRequires: python%{pyver}-pbr
+%if %{pyver} == 2
 BuildRequires: python-d2to1
 %else
-BuildRequires: python%{pydefault}-d2to1
+BuildRequires: python%{pyver}-d2to1
 BuildRequires: /usr/bin/pathfix.py
 %endif
 
@@ -43,19 +43,19 @@ Requires: dib-utils
 Requires: /bin/bash
 Requires: /bin/sh
 Requires: /usr/bin/env
-Requires: python%{pydefault}
-Requires: python%{pydefault}-flake8
-Requires: python%{pydefault}-pbr
-Requires: python%{pydefault}-six
-Requires: python%{pydefault}-stevedore
-%if %{pydefault} == 2
+Requires: python%{pyver}
+Requires: python%{pyver}-flake8
+Requires: python%{pyver}-pbr
+Requires: python%{pyver}-six
+Requires: python%{pyver}-stevedore
+%if %{pyver} == 2
 Requires: python-babel
 Requires: python-networkx
 Requires: PyYAML
 %else
-Requires: python%{pydefault}-babel
-Requires: python%{pydefault}-networkx
-Requires: python%{pydefault}-PyYAML
+Requires: python%{pyver}-babel
+Requires: python%{pyver}-networkx
+Requires: python%{pyver}-PyYAML
 %endif
 
 %global __requires_exclude /usr/local/bin/dib-python
@@ -65,10 +65,10 @@ Requires: python%{pydefault}-PyYAML
 %setup -q -n %{name}-%{upstream_version}
 
 %build
-%{pydefault_build}
+%{pyver_build}
 
 %install
-%{pydefault_install}
+%{pyver_install}
 
 mkdir -p %{buildroot}%{_datadir}/%{name}/elements
 
@@ -81,18 +81,18 @@ rm -rf %{buildroot}%{_datadir}/%{name}/elements/config-applier
 # avoid conflicts with the new package.
 rm -f %{buildroot}%{_bindir}/dib-run-parts
 
-%if %{pydefault} == 3
+%if %{pyver} == 3
 # Fix shebangs for Python 3-only distros
 pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{_datadir}/%{name}/elements/pypi/pre-install.d/00-configure-pypi-mirror
 pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{_datadir}/%{name}/elements/deploy-targetcli/extra-data.d/module/targetcli-wrapper
 pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{_datadir}/%{name}/elements/package-installs/bin/package-installs-squash
 pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{_datadir}/%{name}/elements/svc-map/extra-data.d/10-merge-svc-map-files
 pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{_datadir}/%{name}/elements/svc-map/bin/svc-map
-pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{pydefault_sitelib}/diskimage_builder/elements/pypi/pre-install.d/00-configure-pypi-mirror
-pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{pydefault_sitelib}/diskimage_builder/elements/deploy-targetcli/extra-data.d/module/targetcli-wrapper
-pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{pydefault_sitelib}/diskimage_builder/elements/package-installs/bin/package-installs-squash
-pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{pydefault_sitelib}/diskimage_builder/elements/svc-map/extra-data.d/10-merge-svc-map-files
-pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{pydefault_sitelib}/diskimage_builder/elements/svc-map/bin/svc-map
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{pyver_sitelib}/diskimage_builder/elements/pypi/pre-install.d/00-configure-pypi-mirror
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{pyver_sitelib}/diskimage_builder/elements/deploy-targetcli/extra-data.d/module/targetcli-wrapper
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{pyver_sitelib}/diskimage_builder/elements/package-installs/bin/package-installs-squash
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{pyver_sitelib}/diskimage_builder/elements/svc-map/extra-data.d/10-merge-svc-map-files
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{pyver_sitelib}/diskimage_builder/elements/svc-map/bin/svc-map
 %endif
 
 %description
@@ -102,7 +102,7 @@ Components of TripleO that are responsible for building disk images.
 %doc LICENSE
 %doc doc/source/ci.md
 %{_bindir}/*
-%{pydefault_sitelib}/diskimage_builder*
+%{pyver_sitelib}/diskimage_builder*
 %{_datadir}/%{name}/elements
 
 %changelog

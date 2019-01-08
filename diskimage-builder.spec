@@ -31,6 +31,7 @@ BuildRequires: python%{pydefault}-pbr
 BuildRequires: python-d2to1
 %else
 BuildRequires: python%{pydefault}-d2to1
+BuildRequires: /usr/bin/pathfix.py
 %endif
 
 Requires: kpartx
@@ -79,6 +80,20 @@ rm -rf %{buildroot}%{_datadir}/%{name}/elements/config-applier
 # This file is being split out of diskimage-builder, so remove it to
 # avoid conflicts with the new package.
 rm -f %{buildroot}%{_bindir}/dib-run-parts
+
+%if %{pydefault} == 3
+# Fix shebangs for Python 3-only distros
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{_datadir}/%{name}/elements/pypi/pre-install.d/00-configure-pypi-mirror
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{_datadir}/%{name}/elements/deploy-targetcli/extra-data.d/module/targetcli-wrapper
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{_datadir}/%{name}/elements/package-installs/bin/package-installs-squash
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{_datadir}/%{name}/elements/svc-map/extra-data.d/10-merge-svc-map-files
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{_datadir}/%{name}/elements/svc-map/bin/svc-map
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{pydefault_sitelib}/diskimage_builder/elements/pypi/pre-install.d/00-configure-pypi-mirror
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{pydefault_sitelib}/diskimage_builder/elements/deploy-targetcli/extra-data.d/module/targetcli-wrapper
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{pydefault_sitelib}/diskimage_builder/elements/package-installs/bin/package-installs-squash
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{pydefault_sitelib}/diskimage_builder/elements/svc-map/extra-data.d/10-merge-svc-map-files
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{pydefault_sitelib}/diskimage_builder/elements/svc-map/bin/svc-map
+%endif
 
 %description
 Components of TripleO that are responsible for building disk images.

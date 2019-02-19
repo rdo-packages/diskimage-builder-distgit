@@ -20,12 +20,10 @@ License:        ASL 2.0
 Group:          System Environment/Base
 URL:            https://launchpad.net/diskimage-builder
 Source0:        https://tarballs.openstack.org/diskimage-builder/%{name}-%{upstream_version}.tar.gz
-Patch0001:      0001-Keep-git-after-ironic-agent-post.patch
 AutoReqProv: no
 
 BuildArch: noarch
 
-BuildRequires: git
 BuildRequires: python%{pyver}-devel
 BuildRequires: python%{pyver}-setuptools
 BuildRequires: python%{pyver}-pbr
@@ -64,7 +62,7 @@ Requires: python%{pyver}-PyYAML
 %global __requires_exclude %__requires_exclude|/sbin/runscript
 
 %prep
-%autosetup -n %{name}-%{upstream_version} -S git
+%setup -q -n %{name}-%{upstream_version}
 
 %build
 %{pyver_build}

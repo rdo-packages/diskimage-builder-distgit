@@ -20,6 +20,7 @@ License:        ASL 2.0
 Group:          System Environment/Base
 URL:            https://launchpad.net/diskimage-builder
 Source0:        https://tarballs.openstack.org/diskimage-builder/%{name}-%{upstream_version}.tar.gz
+Patch0001:      0001-Keep-git-after-ironic-agent-post.patch
 AutoReqProv: no
 
 BuildArch: noarch

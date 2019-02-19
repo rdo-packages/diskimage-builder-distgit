@@ -1,0 +1,33 @@
+From 4fb4e337b6f1cf24e954b2c3dc8efb5cf5832cd8 Mon Sep 17 00:00:00 2001
+From: Quique Llorente <ellorent@redhat.com>
+Date: Fri, 15 Feb 2019 11:01:35 +0100
+Subject: [PATCH 1/1] Keep git after ironic-agent post
+
+New versions of pbr depends on git [1] and IPA depends on pbr [2] so
+removing git will remove pbr, IPA and friends.
+
+[1] https://src.fedoraproject.org/rpms/python-pbr/blob/master/f/python-pbr.spec#_64
+[2] https://github.com/rdo-packages/ironic-python-agent-distgit/blob/rpm-master/openstack-ironic-python-agent.spec#L85
+
+Change-Id: I97f6b593e88e1cb81cd4bb2d77787bc012fb8271
+Closes-Bug: #1816017
+---
+ .../elements/ironic-agent/post-install.d/80-ironic-agent        | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/diskimage_builder/elements/ironic-agent/post-install.d/80-ironic-agent b/diskimage_builder/elements/ironic-agent/post-install.d/80-ironic-agent
+index bc3a15fd..81f074e2 100755
+--- a/diskimage_builder/elements/ironic-agent/post-install.d/80-ironic-agent
++++ b/diskimage_builder/elements/ironic-agent/post-install.d/80-ironic-agent
+@@ -6,7 +6,7 @@ fi
+ set -eu
+ set -o pipefail
+ 
+-install-packages -e git cloud-init
++install-packages -e cloud-init
+ 
+ rm -rf /tmp/ironic-python-agent
+ 
+-- 
+2.20.1
+

@@ -40,6 +40,7 @@ Requires: curl
 Requires: tar
 Requires: git
 Requires: dib-utils
+Requires: xfsprogs
 Requires: /bin/bash
 Requires: /bin/sh
 Requires: /usr/bin/env

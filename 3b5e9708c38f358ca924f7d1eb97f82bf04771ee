@@ -1,0 +1,10 @@
+Code-Review+1: Alex Schultz <aschultz@next-development.com>
+Code-Review+2: Yatin Karel <ykarel@redhat.com>
+Code-Review+2: Javier Peña <jpena@redhat.com>
+Workflow+1: Javier Peña <jpena@redhat.com>
+Verified+2: Zuul CI <zuul@review.rdoproject.org>
+Submitted-by: Zuul CI <zuul@review.rdoproject.org>
+Submitted-at: Wed, 13 Mar 2019 09:26:37 +0000
+Reviewed-on: https://review.rdoproject.org/r/19150
+Project: openstack/diskimage-builder-distgit
+Branch: refs/heads/rpm-master

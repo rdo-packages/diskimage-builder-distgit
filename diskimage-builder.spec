@@ -15,7 +15,7 @@
 Name:           diskimage-builder
 Summary:        Image building tools for OpenStack
 Version:        2.27.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        ASL 2.0
 Group:          System Environment/Base
 URL:            https://launchpad.net/diskimage-builder
@@ -45,7 +45,6 @@ Requires: python%{pyver}
 Requires: python%{pyver}-flake8
 Requires: python%{pyver}-pbr
 Requires: python%{pyver}-six
-Requires: python%{pyver}-stevedore
 %if %{pyver} == 2
 Requires: python-babel
 Requires: python-networkx
@@ -104,6 +103,9 @@ Components of TripleO that are responsible for building disk images.
 %{_datadir}/%{name}/elements
 
 %changelog
+* Thu Feb 13 2020 Yatin Karel <ykarel@redhat.com> - 2.27.2-2
+- Test bump for c8
+
 * Tue Oct 01 2019 RDO <dev@lists.rdoproject.org> 2.27.2-1
 - Update to 2.27.2
 

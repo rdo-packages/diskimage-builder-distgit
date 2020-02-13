@@ -1,0 +1,9 @@
+- job:
+    name: distgit-cbs-validate-centos8-test
+    parent: distgit-cbs-validate-centos8
+    run: playbooks/distgit-cbs-validate.yaml
+
+- project:
+    check:
+      jobs:
+        - distgit-cbs-validate-centos8-test

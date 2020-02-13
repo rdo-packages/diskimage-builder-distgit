@@ -1,0 +1,36 @@
+- hosts: all
+  tasks:
+    - name: run pkg-validate.sh
+      shell:
+        cmd: |
+          export WORKSPACE={{ ansible_user_dir }}
+          export DIST_VER="{{ ansible_distribution_major_version }}"
+          ./pkg-validate.sh cloud${DIST_VER}-openstack-{{ zuul.branch|replace('-rdo', '') }}-el${DIST_VER} cbs
+        chdir: "{{ zuul.projects['review.rdoproject.org/gating_scripts'].src_dir }}"
+      environment: '{{ zuul | zuul_legacy_vars }}'
+      changed_when: true
+
+    - name: test install
+      shell:
+        cmd: |
+          set -x
+          # First, we create a chroot to be used in the installation
+          export YUM="{{ ansible_pkg_mgr }}"
+          sudo mkdir -p /tmp/root/var/lib/rpm
+          sudo rpm --root /tmp/root --initdb
+          sudo $YUM -y install $YUM-utils
+          yumdownloader centos-release
+          sudo rpm --root /tmp/root -ivh --nodeps centos-release-*.rpm
+          # rpmfactory-temp-release-1.0-1 is built by the base-pkg-validation builder
+          # It defines two repositories: the newton one (from CBS) and the temporary CBS one that contains
+          # packages we freshly built within that Koji task
+          sudo rpm --root /tmp/root -i {{ ansible_user_dir }}/rpmbuild/RPMS/noarch/rpmfactory-temp-release-1.0-1.noarch.rpm
+          # Packages in the temp repository contained only the packages fetched from CBS
+          # This should list the packages we just build in that Koji task
+          sudo $YUM --installroot=/tmp/root --disablerepo='*' --enablerepo='temp' list available
+          pkgs=$(sudo $YUM --installroot=/tmp/root --disablerepo='*' --enablerepo='temp' --exclude='*.src' list available | awk '/temp$/ {printf "%s ", $1}')
+          sudo $YUM --installroot=/tmp/root repolist -v
+          # Here we install locally the kust built packages
+          sudo $YUM install --installroot=/tmp/root -y https://trunk.rdoproject.org/centos8-train/consistent/dib-utils-0.0.11-0.20191212161731.51661c3.el8.noarch.rpm
+          sudo $YUM install --installroot=/tmp/root -y $pkgs
+      changed_when: true

@@ -1,15 +1,3 @@
-# Macros for py2/py3 compatibility
-%if 0%{?fedora} || 0%{?rhel} > 7
-%global pyver 3
-%else
-%global pyver 2
-%endif
-
-%global pyver_bin python%{pyver}
-%global pyver_sitelib %python%{pyver}_sitelib
-%global pyver_install %py%{pyver}_install
-%global pyver_build %py%{pyver}_build
-# End of macros for py2/py3 compatibility
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 Name:           diskimage-builder
@@ -24,12 +12,10 @@ AutoReqProv: no
 
 BuildArch: noarch
 
-BuildRequires: python%{pyver}-devel
-BuildRequires: python%{pyver}-setuptools
-BuildRequires: python%{pyver}-pbr
-%if %{pyver} == 3
+BuildRequires: python3-devel
+BuildRequires: python3-setuptools
+BuildRequires: python3-pbr
 BuildRequires: /usr/bin/pathfix.py
-%endif
 
 Requires: kpartx
 Requires: qemu-img
@@ -41,20 +27,14 @@ Requires: xfsprogs
 Requires: /bin/bash
 Requires: /bin/sh
 Requires: /usr/bin/env
-Requires: python%{pyver}
-Requires: python%{pyver}-flake8
-Requires: python%{pyver}-pbr
-Requires: python%{pyver}-six
-Requires: python%{pyver}-stevedore
-%if %{pyver} == 2
-Requires: python-babel
-Requires: python-networkx
-Requires: PyYAML
-%else
-Requires: python%{pyver}-babel
-Requires: python%{pyver}-networkx
-Requires: python%{pyver}-PyYAML
-%endif
+Requires: python3
+Requires: python3-flake8
+Requires: python3-pbr
+Requires: python3-six
+Requires: python3-stevedore
+Requires: python3-babel
+Requires: python3-networkx
+Requires: python3-PyYAML
 
 %global __requires_exclude /usr/local/bin/dib-python
 %global __requires_exclude %__requires_exclude|/sbin/runscript
@@ -63,10 +43,10 @@ Requires: python%{pyver}-PyYAML
 %setup -q -n %{name}-%{upstream_version}
 
 %build
-%{pyver_build}
+%{py3_build}
 
 %install
-%{pyver_install}
+%{py3_install}
 
 mkdir -p %{buildroot}%{_datadir}/%{name}/elements
 
@@ -79,19 +59,17 @@ rm -rf %{buildroot}%{_datadir}/%{name}/elements/config-applier
 # avoid conflicts with the new package.
 rm -f %{buildroot}%{_bindir}/dib-run-parts
 
-%if %{pyver} == 3
 # Fix shebangs for Python 3-only distros
 pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{_datadir}/%{name}/elements/pypi/pre-install.d/04-configure-pypi-mirror
 pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{_datadir}/%{name}/elements/deploy-targetcli/extra-data.d/module/targetcli-wrapper
 pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{_datadir}/%{name}/elements/package-installs/bin/package-installs-squash
 pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{_datadir}/%{name}/elements/svc-map/extra-data.d/10-merge-svc-map-files
 pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{_datadir}/%{name}/elements/svc-map/bin/svc-map
-pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{pyver_sitelib}/diskimage_builder/elements/pypi/pre-install.d/04-configure-pypi-mirror
-pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{pyver_sitelib}/diskimage_builder/elements/deploy-targetcli/extra-data.d/module/targetcli-wrapper
-pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{pyver_sitelib}/diskimage_builder/elements/package-installs/bin/package-installs-squash
-pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{pyver_sitelib}/diskimage_builder/elements/svc-map/extra-data.d/10-merge-svc-map-files
-pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{pyver_sitelib}/diskimage_builder/elements/svc-map/bin/svc-map
-%endif
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{python3_sitelib}/diskimage_builder/elements/pypi/pre-install.d/04-configure-pypi-mirror
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{python3_sitelib}/diskimage_builder/elements/deploy-targetcli/extra-data.d/module/targetcli-wrapper
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{python3_sitelib}/diskimage_builder/elements/package-installs/bin/package-installs-squash
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{python3_sitelib}/diskimage_builder/elements/svc-map/extra-data.d/10-merge-svc-map-files
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{python3_sitelib}/diskimage_builder/elements/svc-map/bin/svc-map
 
 %description
 Components of TripleO that are responsible for building disk images.
@@ -100,7 +78,7 @@ Components of TripleO that are responsible for building disk images.
 %doc LICENSE
 %doc doc/source/ci.md
 %{_bindir}/*
-%{pyver_sitelib}/diskimage_builder*
+%{python3_sitelib}/diskimage_builder*
 %{_datadir}/%{name}/elements
 
 %changelog

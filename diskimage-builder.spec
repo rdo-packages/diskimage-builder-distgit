@@ -22,6 +22,7 @@ Requires: kpartx
 Requires: qemu-img
 Requires: curl
 Requires: tar
+Requires: gdisk
 Requires: git
 Requires: dib-utils
 Requires: xfsprogs

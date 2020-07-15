@@ -12,6 +12,7 @@ AutoReqProv: no
 
 BuildArch: noarch
 
+BuildRequires: git
 BuildRequires: python3-devel
 BuildRequires: python3-setuptools
 BuildRequires: python3-pbr
@@ -39,7 +40,10 @@ Requires: python3-PyYAML
 %global __requires_exclude %__requires_exclude|/sbin/runscript
 
 %prep
-%setup -q -n %{name}-%{upstream_version}
+%autosetup -n %{name}-%{upstream_version} -S git
+
+# Remove bundled egg-info
+rm -r diskimage_builder.egg-info
 
 %build
 %{py3_build}

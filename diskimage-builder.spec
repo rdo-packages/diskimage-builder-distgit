@@ -62,6 +62,9 @@ Requires: python%{pyver}-PyYAML
 %prep
 %setup -q -n %{name}-%{upstream_version}
 
+# Remove bundled egg-info
+rm -r diskimage_builder.egg-info
+
 %build
 %{pyver_build}
 

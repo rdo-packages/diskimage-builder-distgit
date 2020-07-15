@@ -24,6 +24,7 @@ AutoReqProv: no
 
 BuildArch: noarch
 
+BuildRequires: git
 BuildRequires: python%{pyver}-devel
 BuildRequires: python%{pyver}-setuptools
 BuildRequires: python%{pyver}-pbr
@@ -60,7 +61,10 @@ Requires: python%{pyver}-PyYAML
 %global __requires_exclude %__requires_exclude|/sbin/runscript
 
 %prep
-%setup -q -n %{name}-%{upstream_version}
+%autosetup -n %{name}-%{upstream_version} -S git
+
+# Remove bundled egg-info
+rm -r diskimage_builder.egg-info
 
 %build
 %{pyver_build}

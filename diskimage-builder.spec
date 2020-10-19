@@ -1,16 +1,29 @@
+%{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
+%global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 Name:           diskimage-builder
 Summary:        Image building tools for OpenStack
 Version:        3.3.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        ASL 2.0
 Group:          System Environment/Base
 URL:            https://launchpad.net/diskimage-builder
 Source0:        https://tarballs.openstack.org/diskimage-builder/%{name}-%{upstream_version}.tar.gz
+# Required for tarball sources verification
+%if 0%{?sources_gpg} == 1
+Source101:        https://tarballs.openstack.org/diskimage-builder/%{name}-%{upstream_version}.tar.gz.asc
+Source102:        https://releases.openstack.org/_static/%{sources_gpg_sign}.txt
+%endif
 AutoReqProv: no
 
 BuildArch: noarch
+
+# Required for tarball sources verification
+%if 0%{?sources_gpg} == 1
+BuildRequires:  /usr/bin/gpgv2
+BuildRequires:  openstack-macros
+%endif
 
 BuildRequires: git
 BuildRequires: python3-devel
@@ -41,6 +54,10 @@ Requires: python3-PyYAML
 %global __requires_exclude %__requires_exclude|/sbin/runscript
 
 %prep
+# Required for tarball sources verification
+%if 0%{?sources_gpg} == 1
+%{gpgverify}  --keyring=%{SOURCE102} --signature=%{SOURCE101} --data=%{SOURCE0}
+%endif
 %autosetup -n %{name}-%{upstream_version} -S git
 
 # Remove bundled egg-info
@@ -86,6 +103,9 @@ Components of TripleO that are responsible for building disk images.
 %{_datadir}/%{name}/elements
 
 %changelog
+* Tue Oct 20 2020 Joel Capitao <jcapitao@redhat.com> 3.3.1-2
+- Enable sources tarball validation using GPG signature.
+
 * Thu Sep 24 2020 RDO <dev@lists.rdoproject.org> 3.3.1-1
 - Update to 3.3.1
 

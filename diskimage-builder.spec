@@ -5,6 +5,8 @@
 %global pyver 2
 %endif
 
+%global rhosp 0
+
 %global pyver_bin python%{pyver}
 %global pyver_sitelib %{expand:%{python%{pyver}_sitelib}}
 %global pyver_install %{expand:%{py%{pyver}_install}}
@@ -16,6 +18,9 @@ Name:           diskimage-builder
 Summary:        Image building tools for OpenStack
 Version:        2.38.0
 Release:        1%{?dist}
+%if 0%{?rhosp}
+Epoch:          1
+%endif
 License:        ASL 2.0
 Group:          System Environment/Base
 URL:            https://launchpad.net/diskimage-builder

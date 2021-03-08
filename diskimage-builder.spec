@@ -43,12 +43,11 @@ Requires: /bin/bash
 Requires: /bin/sh
 Requires: /usr/bin/env
 Requires: python3
-Requires: python3-flake8
-Requires: python3-pbr
-Requires: python3-six
-Requires: python3-stevedore
-Requires: python3-networkx
-Requires: python3-PyYAML
+Requires: python3-flake8 >= 3.6.0
+Requires: python3-pbr >= 2.0.0
+Requires: python3-stevedore >= 1.20.0
+Requires: python3-networkx >= 1.10
+Requires: python3-yaml >= 3.12
 
 %global __requires_exclude /usr/local/bin/dib-python
 %global __requires_exclude %__requires_exclude|/sbin/runscript

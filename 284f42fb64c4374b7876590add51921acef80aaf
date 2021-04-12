@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ec9f3d6_e513caea",
+        "filename": "diskimage-builder.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2021-04-12T06:50:01Z",
+      "side": 1,
+      "message": "also need to bump version to a tag such that patch applies successfully, it\u0027s failing currently https://cbs.centos.org/kojifiles/work/tasks/8826/2468826/build.log. After rdoinfo patch merges bot will propose it to 3.9.0.\n\nWould need ninja merge this and take rdoinfo patch along https://review.rdoproject.org/r/c/rdoinfo/+/33212",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "284f42fb64c4374b7876590add51921acef80aaf",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": true
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+From 3ce22dd90fb01b27b818821c1ed9926ef0d27868 Mon Sep 17 00:00:00 2001
+From: "Chandan Kumar (raukadah)" <chkumar@redhat.com>
+Date: Mon, 12 Apr 2021 10:16:46 +0530
+Subject: [PATCH 1/1] Revert "Drop six usage"
+
+This reverts commit 4493208048060811eba3fe5e86169cf41f580d84.
+---
+ diskimage_builder/block_device/plugin.py | 7 +++++--
+ lower-constraints.txt                    | 1 +
+ requirements.txt                         | 1 +
+ 3 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/diskimage_builder/block_device/plugin.py b/diskimage_builder/block_device/plugin.py
+index e1f630c8..64fc199e 100644
+--- a/diskimage_builder/block_device/plugin.py
++++ b/diskimage_builder/block_device/plugin.py
+@@ -12,6 +12,7 @@
+ 
+ import abc
+ import logging
++import six
+ 
+ #
+ # Plugins convert configuration entries into graph nodes ready for
+@@ -21,7 +22,8 @@ import logging
+ logger = logging.getLogger(__name__)
+ 
+ 
+-class NodeBase(object, metaclass=abc.ABCMeta):
++@six.add_metaclass(abc.ABCMeta)
++class NodeBase(object):
+     """A configuration node entry
+ 
+     This is the main driver class for dib-block-device operation.
+@@ -153,7 +155,8 @@ class NodeBase(object, metaclass=abc.ABCMeta):
+         return
+ 
+ 
+-class PluginBase(object, metaclass=abc.ABCMeta):
++@six.add_metaclass(abc.ABCMeta)
++class PluginBase(object):
+     """The base plugin object
+ 
+     This is the base plugin object.  Plugins are an instantiation of
+diff --git a/lower-constraints.txt b/lower-constraints.txt
+index 86f834a7..a4004281 100644
+--- a/lower-constraints.txt
++++ b/lower-constraints.txt
+@@ -35,6 +35,7 @@ PyYAML==3.12
+ reno==2.5.0
+ requests==2.14.2
+ requestsexceptions==1.2.0
++six==1.10.0
+ snowballstemmer==1.2.1
+ Sphinx==1.6.2
+ sphinxcontrib-websupport==1.0.1
+diff --git a/requirements.txt b/requirements.txt
+index 53a60601..b009ed84 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -5,6 +5,7 @@
+ networkx>=1.10 # BSD
+ pbr!=2.1.0,>=2.0.0 # Apache-2.0
+ PyYAML>=3.12 # MIT
++six>=1.10.0 # MIT
+ stevedore>=1.20.0 # Apache-2.0
+ # NOTE(ianw) in here because dib-lint uses flake8
+ flake8<4.0.0,>=3.6.0 # MIT
+-- 
+2.30.2
+

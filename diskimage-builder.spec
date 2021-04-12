@@ -15,11 +15,15 @@
 Name:           diskimage-builder
 Summary:        Image building tools for OpenStack
 Version:        2.38.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        ASL 2.0
 Group:          System Environment/Base
 URL:            https://launchpad.net/diskimage-builder
 Source0:        https://tarballs.openstack.org/diskimage-builder/%{name}-%{upstream_version}.tar.gz
+# workaround for handling py2 and py3 metaclass issue
+%if %{pyver} == 2
+Patch0001: 0001-Revert-Drop-six-usage.patch
+%endif
 AutoReqProv: no
 
 BuildArch: noarch
@@ -109,6 +113,9 @@ Components of TripleO that are responsible for building disk images.
 %{_datadir}/%{name}/elements
 
 %changelog
+* Mon Apr 12 2021 Chandan Kumar <chkumar@redhat.com> 2.38.0-2
+- Added revert patch for six
+
 * Tue Jun 09 2020 RDO <dev@lists.rdoproject.org> 2.38.0-1
 - Update to 2.38.0
 

@@ -36,6 +36,7 @@ Requires: qemu-img
 Requires: curl
 Requires: tar
 Requires: gdisk
+Requires: lvm2
 Requires: git-core
 Requires: dib-utils
 Requires: xfsprogs

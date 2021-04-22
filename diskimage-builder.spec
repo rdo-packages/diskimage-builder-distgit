@@ -41,6 +41,7 @@ Requires: qemu-img
 Requires: curl
 Requires: tar
 Requires: gdisk
+Requires: lvm2
 Requires: git
 Requires: dib-utils
 Requires: xfsprogs

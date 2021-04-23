@@ -1,0 +1,9 @@
+Code-Review+2: Chandan Kumar <chkumar@redhat.com>
+Code-Review+2: Yatin Karel <ykarel@redhat.com>
+Workflow+1: Yatin Karel <ykarel@redhat.com>
+Verified+2: Zuul CI <zuul@review.rdoproject.org>
+Submitted-by: Zuul CI <zuul@review.rdoproject.org>
+Submitted-at: Fri, 23 Apr 2021 06:56:29 +0000
+Reviewed-on: https://review.rdoproject.org/r/c/openstack/diskimage-builder-distgit/+/33232
+Project: openstack/diskimage-builder-distgit
+Branch: refs/heads/train-rdo

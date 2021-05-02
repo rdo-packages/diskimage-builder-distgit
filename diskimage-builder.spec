@@ -37,6 +37,7 @@ Requires: curl
 Requires: tar
 Requires: gdisk
 Requires: lvm2
+Requires: dosfstools
 Requires: git-core
 Requires: dib-utils
 Requires: xfsprogs

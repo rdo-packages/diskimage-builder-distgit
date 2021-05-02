@@ -39,7 +39,11 @@ Requires: gdisk
 Requires: lvm2
 Requires: git-core
 Requires: dib-utils
-Requires: xfsprogs
+Requires: /usr/sbin/mkfs.ext2
+Requires: /usr/sbin/mkfs.ext3
+Requires: /usr/sbin/mkfs.ext4
+Requires: /usr/sbin/mkfs.xfs
+Requires: /usr/sbin/mkfs.vfat
 Requires: /bin/bash
 Requires: /bin/sh
 Requires: /usr/bin/env

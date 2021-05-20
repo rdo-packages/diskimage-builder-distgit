@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "501d6007_7c59e627",
+        "filename": "diskimage-builder.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2021-05-20T21:15:00Z",
+      "side": 1,
+      "message": "so this is implicit dep via https://github.com/openstack/diskimage-builder/blob/master/diskimage_builder/block_device/level2/mkfs.py#L36\n\nwdyt about Requires: /usr/sbin/mkfs.vfat \nand similar for all other supported filesystems?",
+      "revId": "2b09c8e8606625194ec8ffe9e85297172f0adf7f",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": true
+    }
+  ]
+}

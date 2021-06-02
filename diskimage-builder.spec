@@ -21,9 +21,7 @@ Group:          System Environment/Base
 URL:            https://launchpad.net/diskimage-builder
 Source0:        https://tarballs.openstack.org/diskimage-builder/%{name}-%{upstream_version}.tar.gz
 # workaround for handling py2 and py3 metaclass issue
-%if %{pyver} == 2
 Patch0001: 0001-Revert-Drop-six-usage.patch
-%endif
 AutoReqProv: no
 
 BuildArch: noarch

@@ -90,3 +90,4 @@ Components of TripleO that are responsible for building disk images.
 * Wed Apr 29 2020 RDO <dev@lists.rdoproject.org> 2.36.0-1
 - Update to 2.36.0
 
+# REMOVEME: error caused by commit https://opendev.org/openstack/diskimage-builder/commit/6ae099f464a76dab03842612bb548c3b1475953e

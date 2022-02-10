@@ -101,9 +101,9 @@ Components of TripleO that are responsible for building disk images.
 
 %files
 %doc LICENSE
-%doc doc/source/ci.md
 %{_bindir}/*
 %{python3_sitelib}/diskimage_builder*
 %{_datadir}/%{name}/elements
 
 %changelog
+# REMOVEME: error caused by commit https://opendev.org/openstack/diskimage-builder/commit/79ea63f5251f6f9a11d1a26537cd2c76389d2d66

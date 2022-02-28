@@ -51,7 +51,7 @@ Requires: python3
 Requires: python3-flake8 >= 3.6.0
 Requires: python3-pbr >= 2.0.0
 Requires: python3-stevedore >= 1.20.0
-Requires: python3-networkx >= 1.10
+Requires: python3-networkx >= 2.3.0
 Requires: python3-yaml >= 3.12
 
 %global __requires_exclude /usr/local/bin/dib-python

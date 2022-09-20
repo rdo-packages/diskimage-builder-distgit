@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "271e8d90_b732107e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2022-09-20T13:08:09Z",
+      "side": 1,
+      "message": "I wonder if we actually need to build dib-utils.",
+      "revId": "3e41d891da85ba987231c3d45a723fe1cf8f46c7",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    }
+  ]
+}

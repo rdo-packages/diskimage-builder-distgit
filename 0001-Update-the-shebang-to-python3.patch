@@ -1,0 +1,27 @@
+From 8dc4c3cd1e89b84e413ea9b4f4ef6f6cf75e0c95 Mon Sep 17 00:00:00 2001
+From: Joel Capitao <jcapitao@redhat.com>
+Date: Tue, 25 Jul 2023 18:54:40 +0200
+Subject: [PATCH] Update the shebang to python3
+
+It's needed downstream when packaging. In RDO and Fedora,
+we are hitting the issue "ERROR: ambiguous python shebang" during
+the build.
+
+Change-Id: Icaf0e62a8c6f0f873016ef1d17c434941e794c2f
+---
+ .../deploy-targetcli/extra-data.d/module/targetcli-wrapper      | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/diskimage_builder/elements/deploy-targetcli/extra-data.d/module/targetcli-wrapper b/diskimage_builder/elements/deploy-targetcli/extra-data.d/module/targetcli-wrapper
+index 9bf5d8a4..fa664ae5 100755
+--- a/diskimage_builder/elements/deploy-targetcli/extra-data.d/module/targetcli-wrapper
++++ b/diskimage_builder/elements/deploy-targetcli/extra-data.d/module/targetcli-wrapper
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python3
+ 
+ # Copyright 2014 Red Hat, Inc.
+ #
+-- 
+2.40.1
+

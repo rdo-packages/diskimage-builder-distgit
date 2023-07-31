@@ -16,6 +16,23 @@
       "message": "recheck",
       "revId": "374bb3e89cade0a389d5eb72f41a07b06d7e177c",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c0e8d76_c2be77da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2023-07-31T14:37:36Z",
+      "side": 1,
+      "message": "why not using %py3_shebang_fix instead of a .patch ? i think it\u0027s better to us the macro. It will not fail if the patch is applied upstream\n\nhttps://docs.fedoraproject.org/en-US/packaging-guidelines/Python/#_shebangs",
+      "revId": "374bb3e89cade0a389d5eb72f41a07b06d7e177c",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
     }
   ]
 }

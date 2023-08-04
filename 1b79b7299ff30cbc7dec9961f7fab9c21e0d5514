@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e26cd5a7_ee57057a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2023-08-04T14:17:32Z",
+      "side": 1,
+      "message": "I\u0027m proposing a way to not add so many unneeded BRs, other than that, lgtm.",
+      "revId": "1b79b7299ff30cbc7dec9961f7fab9c21e0d5514",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "668baace_aec34c61",
+        "filename": "diskimage-builder.spec",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2023-08-04T14:17:32Z",
+      "side": 1,
+      "message": "Given that we are not building docs or config files and we are not running tests, what if we just do -R here?",
+      "range": {
+        "startLine": 78,
+        "startChar": 25,
+        "endLine": 78,
+        "endChar": 48
+      },
+      "revId": "1b79b7299ff30cbc7dec9961f7fab9c21e0d5514",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    }
+  ]
+}

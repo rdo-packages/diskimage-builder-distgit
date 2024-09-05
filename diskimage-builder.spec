@@ -38,6 +38,7 @@ Requires: tar
 Requires: gdisk
 Requires: lvm2
 Requires: git-core
+Requires: /usr/bin/guestfish
 Requires: /usr/sbin/mkfs.ext2
 Requires: /usr/sbin/mkfs.ext3
 Requires: /usr/sbin/mkfs.ext4

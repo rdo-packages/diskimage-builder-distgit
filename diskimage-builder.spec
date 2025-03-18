@@ -3,14 +3,14 @@
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %{?dlrn: %global tarsources diskimage-builder}
-%{!?dlrn: %global tarsources diskimage_builder}
+%{!?dlrn: %global tarsources diskimage-builder}
 # we are excluding some BRs from automatic generator
 %global excluded_brs doc8 bandit pre-commit hacking flake8-import-order bashate sphinx openstackdocstheme yamllint pylint
 
 Name:           diskimage-builder
 Summary:        Image building tools for OpenStack
-Version:        XXX
-Release:        XXX
+Version:        3.37.0
+Release:        1%{?dist}
 License:        Apache-2.0
 Group:          System Environment/Base
 URL:            https://launchpad.net/diskimage-builder
@@ -108,3 +108,6 @@ Components of TripleO that are responsible for building disk images.
 %{_datadir}/%{name}/elements
 
 %changelog
+* Tue Mar 18 2025 RDO <dev@lists.rdoproject.org> 3.37.0-1
+- Update to 3.37.0
+

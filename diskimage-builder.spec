@@ -108,6 +108,9 @@ Components of TripleO that are responsible for building disk images.
 %{_datadir}/%{name}/elements
 
 %changelog
+<<<<<<< HEAD   (f07895 diskimage-builder-3.37.0-1)
 * Tue Mar 18 2025 RDO <dev@lists.rdoproject.org> 3.37.0-1
 - Update to 3.37.0
+=======
+>>>>>>> CHANGE (a645c1 Dummy commit to force component rebuild)
 

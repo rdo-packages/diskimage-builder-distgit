@@ -108,3 +108,4 @@ Components of TripleO that are responsible for building disk images.
 * Thu Mar 28 2024 RDO <dev@lists.rdoproject.org> 3.32.0-1
 - Update to 3.32.0
 
+

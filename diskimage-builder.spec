@@ -105,6 +105,24 @@ Components of TripleO that are responsible for building disk images.
 %{_datadir}/%{name}/elements
 
 %changelog
+<<<<<<< HEAD   (a4fc00 Update %__requires_exclude to openrc-run)
 * Mon Sep 04 2023 RDO <dev@lists.rdoproject.org> 3.31.0-1
 - Update to 3.31.0
+=======
+<<<<<<< HEAD   (caaa14 Update %__requires_exclude to openrc-run)
+* Thu Mar 28 2024 RDO <dev@lists.rdoproject.org> 3.32.0-1
+- Update to 3.32.0
+=======
+<<<<<<< HEAD   (c5b108 Update %__requires_exclude to openrc-run)
+* Tue Sep 24 2024 RDO <dev@lists.rdoproject.org> 3.34.0-1
+- Update to 3.34.0
+=======
+<<<<<<< HEAD   (f07895 diskimage-builder-3.37.0-1)
+* Tue Mar 18 2025 RDO <dev@lists.rdoproject.org> 3.37.0-1
+- Update to 3.37.0
+=======
+>>>>>>> CHANGE (a645c1 Dummy commit to force component rebuild)
+>>>>>>> CHANGE (1ff162 Dummy commit to force component rebuild)
+>>>>>>> CHANGE (03b0c0 Dummy commit to force component rebuild)
+>>>>>>> CHANGE (0b0506 Dummy commit to force component rebuild)
 
